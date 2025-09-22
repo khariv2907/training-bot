@@ -1,0 +1,19 @@
+{
+  "name": "training-bot",
+  "version": "1.0.0",
+  "description": "Training Telegram Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khariv2907/training-bot.git"
+  },
+  "author": "Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khariv2907/training-bot/issues"
+  },
+  "homepage": "https://github.com/khariv2907/training-bot#readme"
+}
