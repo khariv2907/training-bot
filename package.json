@@ -1,19 +1,35 @@
 {
   "name": "training-bot",
   "version": "1.0.0",
-  "description": "Training Telegram Bot",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "grammy": "^1.38.2",
+    "mysql2": "^3.15.1",
+    "nodemon": "^3.1.10",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.27"
+  },
   "scripts": {
-    "test": "npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/khariv2907/training-bot.git"
-  },
-  "author": "Ivan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/khariv2907/training-bot/issues"
-  },
-  "homepage": "https://github.com/khariv2907/training-bot#readme"
+    "dev": "nodemon --exec tsx src/index.ts",
+    "build": "tsc",
+    "start:prod": "node dist/index.js",
+    "lint": "eslint src --ext .ts,.js --fix",
+    "format": "prettier --write .",
+    "migration:run": "npx typeorm-ts-node-esm migration:run --dataSource ./src/data-source.ts",
+    "migration:generate": "npx typeorm-ts-node-esm migration:generate --dataSource ./src/data-source.ts",
+    "migration:revert": "npx typeorm-ts-node-esm migration:revert --dataSource ./src/data-source.ts"
+  }
 }
