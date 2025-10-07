@@ -1,0 +1,10 @@
+{
+  "commands": {
+    "start": "Home"
+  },
+  "start": {
+    "title": "Main menu",
+    "greeting": "Hello, {name}! Welcome to the bot.",
+    "hint": "Use the menu or send a command to continue."
+  }
+}

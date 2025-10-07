@@ -15,6 +15,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "@grammyjs/i18n": "^1.1.2",
     "dotenv": "^17.2.2",
     "grammy": "^1.38.2",
     "mysql2": "^3.15.1",
