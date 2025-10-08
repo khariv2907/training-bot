@@ -1,0 +1,7 @@
+{
+    "locales": {
+        "supportedLocales": ["en", "uk"],
+        "defaultLocale": "en",
+        "directory": "locales"
+    }
+}
