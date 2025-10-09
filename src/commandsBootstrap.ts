@@ -52,6 +52,10 @@ export async function bootBotCommands(bot: Bot<BotContext>, i18n: I18n<BotContex
       command: command,
       description: i18n.fluent.translate(locale, `commands-${command}`),
     }));
+    console.log('----set', {
+      commands,
+      options: isDefaultLocale ? {} : { language_code: locale as LanguageCode }
+    });
 
     await bot.api.setMyCommands(
       commands,

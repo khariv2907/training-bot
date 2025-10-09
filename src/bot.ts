@@ -20,6 +20,12 @@ bot.use(i18n.middleware());
 
 await registerCommands(bot, i18n);
 
+const defaultCommands = await bot.api.getMyCommands();
+const ukCommands = await bot.api.getMyCommands({ language_code: 'uk' });
+
+console.log("Default:", defaultCommands);
+console.log("Ukrainian:", ukCommands);
+
 // Handle errors
 bot.catch((err) => {
   const ctx = err.ctx;
