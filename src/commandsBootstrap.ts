@@ -1,7 +1,8 @@
 import { Bot } from "grammy";
 import { BotContext } from "./types/context";
 import { Command } from "./enums/Command";
-import { startCommand, homeCommand } from "./commands";
+import { StartCommand, HomeCommand } from "./commands";
+import { CommandContract } from "./types/commands";
 import { I18n } from "@grammyjs/i18n";
 import config from "config";
 import { LanguageCode } from "grammy/types";
@@ -15,13 +16,22 @@ const COMMANDS = [
 ];
 
 /**
+ * Array of command class instances
+ */
+const commandImplementations: CommandContract[] = [
+  new StartCommand(),
+  new HomeCommand()
+];
+
+/**
  * Register commands
  *
  * @param bot - Bot instance
  */
 export function bootCommands(bot: Bot<BotContext>): void {
-  startCommand.register(bot);
-  homeCommand.register(bot);
+  for (const command of commandImplementations) {
+    command.register(bot);
+  }
 }
 
 /**
