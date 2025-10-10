@@ -19,6 +19,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "@grammyjs/commands": "^1.2.0",
     "@grammyjs/i18n": "^1.1.2",
     "config": "^4.1.1",
     "dotenv": "^17.2.2",

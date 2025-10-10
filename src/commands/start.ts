@@ -1,13 +1,17 @@
-import { Bot } from "grammy";
 import { BotContext } from "Src/types/context";
 import { Command } from "Src/enums/Command";
 import { CommandContract } from "Src/types/commands";
 import { UserRepoService } from "Src/repositories/UserRepository";
+import { BaseCommand } from "Src/commands/command";
 
-export class StartCommand implements CommandContract {
-  public register(bot: Bot<BotContext>): void {
-    bot.command(Command.START, async (ctx: BotContext) => {
-      const userExists = await this.userExists(ctx);
+/**
+ * Class StartCommand
+ */
+export class StartCommand extends BaseCommand implements CommandContract {
+  protected command: Command = Command.START;
+
+  protected async handle(ctx: BotContext): Promise<void> {
+    const userExists = await this.userExists(ctx);
       const name = ctx.from?.first_name || ctx.from?.username || 'user';
 
       if (!ctx.from?.id) {
@@ -27,7 +31,6 @@ export class StartCommand implements CommandContract {
         await UserRepoService.createUser(telegramId,  username);
         await ctx.reply(ctx.t('start-created', { name }));
       }
-    });
   }
 
   private async userExists(ctx: BotContext): Promise<boolean> {

@@ -1,8 +1,6 @@
 import { Bot, GrammyError, HttpError } from "grammy";
-import { I18n } from "@grammyjs/i18n";
-import config from "config";
 import { BotContext } from "Src/types/context";
-import { registerCommands } from "Src/commandsBootstrap";
+import { bootCommands, bootI18n } from "Src/bootstrap";
 
 if (!process.env.TELEGRAM_API_KEY) {
   throw new Error("The Telegram API token is not set.");
@@ -10,21 +8,8 @@ if (!process.env.TELEGRAM_API_KEY) {
 
 export const bot = new Bot<BotContext>(process.env.TELEGRAM_API_KEY);
 
-const i18n = new I18n<BotContext>({
-	defaultLocale: config.get('locales.defaultLocale')
-});
-
-await i18n.loadLocalesDir(config.get('locales.directory'));
-
-bot.use(i18n.middleware());
-
-await registerCommands(bot, i18n);
-
-const defaultCommands = await bot.api.getMyCommands();
-const ukCommands = await bot.api.getMyCommands({ language_code: 'uk' });
-
-console.log("Default:", defaultCommands);
-console.log("Ukrainian:", ukCommands);
+const i18n = await bootI18n(bot);
+await bootCommands(bot, i18n);
 
 // Handle errors
 bot.catch((err) => {
