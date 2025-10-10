@@ -1,12 +1,13 @@
 import "reflect-metadata";
 import "dotenv/config";
 import { DataSource } from "typeorm";
+import { isProduction } from "Src/helpers/environmentHelper";
 
 if (!process.env.DB_HOST || !process.env.DB_PORT || !process.env.DB_USER || !process.env.DB_PASSWORD || !process.env.DB_NAME) {
     throw new Error("Database configuration is not set.");
 }
 
-const isProd = process.env.NODE_ENV === "production";
+const isProd = isProduction();
 
 export const AppDataSource = new DataSource({
   type: "mariadb",

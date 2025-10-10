@@ -3,7 +3,7 @@ import "dotenv/config";
 import { initDatabase } from "Src/data-source";
 import { bot } from "Src/bot";
 
-async function bootstrap() {
+async function run() {
   await initDatabase();
 
   try {
@@ -14,4 +14,4 @@ async function bootstrap() {
   }
 }
 
-bootstrap();
+run();
