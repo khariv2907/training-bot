@@ -3,22 +3,24 @@ import "dotenv/config";
 import { DataSource } from "typeorm";
 
 if (!process.env.DB_HOST || !process.env.DB_PORT || !process.env.DB_USER || !process.env.DB_PASSWORD || !process.env.DB_NAME) {
-    throw new Error("Database configuration is not set. 222");
+    throw new Error("Database configuration is not set.");
 }
 
+const isProd = process.env.NODE_ENV === "production";
+
 export const AppDataSource = new DataSource({
-    type: "mariadb",
-    host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT),
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    synchronize: false,
-    logging: false,
-    subscribers: [],
-    entities: ["src/entities/*.ts"],
-    migrations: ["src/migrations/*.ts"],
-    });
+  type: "mariadb",
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  synchronize: false,
+  logging: false,
+  subscribers: [],
+  entities: [isProd ? "dist/entities/*.js" : "src/entities/*.ts"],
+  migrations: [ isProd ? "dist/migrations/*.js" : "src/migrations/*.ts"]
+});
 
 export async function initDatabase() {
     try {

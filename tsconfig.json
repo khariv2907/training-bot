@@ -14,9 +14,9 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "Src/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "src/data-source.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

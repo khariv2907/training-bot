@@ -1,8 +1,8 @@
 import { Bot, GrammyError, HttpError } from "grammy";
 import { I18n } from "@grammyjs/i18n";
 import config from "config";
-import { BotContext } from "./types/context";
-import { registerCommands } from "./commandsBootstrap";
+import { BotContext } from "Src/types/context";
+import { registerCommands } from "Src/commandsBootstrap";
 
 if (!process.env.TELEGRAM_API_KEY) {
   throw new Error("The Telegram API token is not set.");

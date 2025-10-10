@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
-import { initDatabase } from "./data-source";
-import { bot } from "./bot";
+import { initDatabase } from "Src/data-source";
+import { bot } from "Src/bot";
 
 async function bootstrap() {
   await initDatabase();

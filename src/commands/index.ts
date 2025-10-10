@@ -1,2 +1,2 @@
-export { StartCommand } from "./start";
-export { HomeCommand } from "./home";
+export { StartCommand } from "Src/commands/start";
+export { HomeCommand } from "Src/commands/home";

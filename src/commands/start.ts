@@ -1,8 +1,8 @@
 import { Bot } from "grammy";
-import { BotContext } from "../types/context";
-import { Command } from "../enums/Command";
-import { CommandContract } from "../types/commands";
-import { UserRepoService } from "../repositories/UserRepository";
+import { BotContext } from "Src/types/context";
+import { Command } from "Src/enums/Command";
+import { CommandContract } from "Src/types/commands";
+import { UserRepoService } from "Src/repositories/UserRepository";
 
 export class StartCommand implements CommandContract {
   public register(bot: Bot<BotContext>): void {

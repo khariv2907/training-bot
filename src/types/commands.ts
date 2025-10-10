@@ -1,5 +1,5 @@
 import { Bot } from "grammy";
-import { BotContext } from "./context";
+import { BotContext } from "Src/types/context";
 
 export interface CommandContract {
   // eslint-disable-next-line no-unused-vars

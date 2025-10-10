@@ -1,8 +1,8 @@
 import { Bot } from "grammy";
-import { BotContext } from "./types/context";
-import { Command } from "./enums/Command";
-import { StartCommand, HomeCommand } from "./commands";
-import { CommandContract } from "./types/commands";
+import { BotContext } from "Src/types/context";
+import { Command } from "Src/enums/Command";
+import { StartCommand, HomeCommand } from "Src/commands";
+import { CommandContract } from "Src/types/commands";
 import { I18n } from "@grammyjs/i18n";
 import config from "config";
 import { LanguageCode } from "grammy/types";
