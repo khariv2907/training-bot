@@ -3,6 +3,7 @@ import { Command } from "Src/enums/Command";
 import { CommandContract } from "Src/types/commands";
 import { UserRepoService } from "Src/repositories/UserRepository";
 import { BaseCommand } from "Src/commands/command";
+import { UserDto } from "Src/dto/UserDto";
 
 /**
  * Class StartCommand
@@ -25,10 +26,7 @@ export class StartCommand extends BaseCommand implements CommandContract {
       if (userExists) {
         await ctx.reply(ctx.t('start-exists', { name }));
       } else {
-        const telegramId = String(ctx.from.id);
-        const username = ctx.from.username;
-
-        await UserRepoService.createUser(telegramId,  username);
+        await UserRepoService.createUser(UserDto.fromCtx(ctx));
         await ctx.reply(ctx.t('start-created', { name }));
       }
   }
