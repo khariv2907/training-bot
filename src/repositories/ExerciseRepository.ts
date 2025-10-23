@@ -1,5 +1,5 @@
 import { AppDataSource } from "Src/data-source";
-import { Exercise } from "Src/entities/Exercise";
+import { Exercise } from "Src/entities";
 
 export const ExerciseRepository = AppDataSource.getRepository(Exercise);
 

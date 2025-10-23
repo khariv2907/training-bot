@@ -2,6 +2,7 @@ import "reflect-metadata";
 import "dotenv/config";
 import { DataSource } from "typeorm";
 import { isProduction } from "Src/helpers/environmentHelper";
+import * as Entities from "Src/entities"; 
 
 if (!process.env.DB_HOST || !process.env.DB_PORT || !process.env.DB_USER || !process.env.DB_PASSWORD || !process.env.DB_NAME) {
     throw new Error("Database configuration is not set.");
@@ -19,7 +20,7 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: false,
   subscribers: [],
-  entities: [isProd ? "dist/entities/*.js" : "src/entities/*.ts"],
+  entities: Object.values(Entities),
   migrations: [ isProd ? "dist/migrations/*.js" : "src/migrations/*.ts"]
 });
 

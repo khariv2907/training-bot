@@ -1,9 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm";
-import { ExerciseGroup } from "./ExerciseGroup";
-import { ExerciseTranslation } from "./ExerciseTranslation";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn, Relation } from "typeorm";
 import { ExerciseTraits } from "Src/types/exercise";
+import { ExerciseGroup, ExerciseTranslation } from "Src/entities";
 
-@Entity(" ")
+@Entity("exercises")
 export class Exercise {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -19,8 +18,8 @@ export class Exercise {
 
   @ManyToOne(() => ExerciseGroup, (group) => group.exercises, { onDelete: "SET NULL" })
   @JoinColumn({ name: "group_id" })
-  group?: ExerciseGroup;
+  group?: Relation<ExerciseGroup>;
 
-  @OneToMany(() => ExerciseTranslation, (translation) => translation.exercise, { cascade: true })
-  translations!: ExerciseTranslation[];
+  @OneToMany(() => ExerciseTranslation, (translation: any) => translation.exercise, { cascade: true })
+  translations!: Relation<ExerciseTranslation>[];
 }

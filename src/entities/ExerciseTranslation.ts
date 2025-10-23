@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { Exercise } from "./Exercise";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Relation } from "typeorm";
+import { Exercise } from "Src/entities";
 
 @Entity("exercise_translations")
 export class ExerciseTranslation {
@@ -20,5 +20,5 @@ export class ExerciseTranslation {
 
   @ManyToOne(() => Exercise, (exercise) => exercise.translations, { onDelete: "CASCADE" })
   @JoinColumn({ name: "exercise_id" })
-  exercise!: Exercise;
+  exercise!: Relation<Exercise>;
 }

@@ -35,8 +35,8 @@
     "start:prod": "cross-env NODE_ENV=production node dist/index.js",
     "lint": "eslint src --ext .ts,.js --fix",
     "format": "prettier --write .",
-    "migration:run": "npx typeorm-ts-node-esm migration:run --dataSource ./src/data-source.ts",
+    "migration:run": "npm run build && cross-env NODE_ENV=production npx typeorm migration:run --dataSource ./dist/data-source.js",
     "migration:generate": "npx typeorm-ts-node-esm migration:generate --dataSource ./src/data-source.ts",
-    "migration:revert": "npx typeorm-ts-node-esm migration:revert --dataSource ./src/data-source.ts"
+    "migration:revert": "npm run build && cross-env NODE_ENV=production npx typeorm migration:revert --dataSource ./dist/data-source.js"
   }
 }
