@@ -2,7 +2,7 @@ import { BotContext } from "Src/types/context";
 import { Command } from "Src/enums/Command";
 import { CommandContract } from "Src/types/commands";
 import { UserRepoService } from "Src/repositories/UserRepository";
-import { BaseCommand } from "Src/commands/command";
+import { BaseCommand } from "Src/bot/commands/BaseCommand";
 import { UserDto } from "Src/dto/UserDto";
 
 /**

@@ -14,7 +14,8 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "paths": {
-      "Src/*": ["./src/*"]
+      "Src/*": ["./src/*"],
+      "Bot/*": ["./src/bot/*"]
     }
   },
   "include": ["src/**/*"],

@@ -6,4 +6,5 @@ export enum Command {
   TRAINING = 'training',
   MEASUREMENTS = 'measurements',
   PROFILE = 'profile',
+  ADMIN = 'admin',
 }
