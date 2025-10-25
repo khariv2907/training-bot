@@ -1,7 +1,7 @@
 import config from "config";
 import { Bot } from "grammy";
 import { BotContext } from "Src/types/context";
-import { StartCommand, HomeCommand } from "Src/commands";
+import { StartCommand, HomeCommand, ExercisesCommand } from "Src/commands";
 import { I18n } from "@grammyjs/i18n";
 import { CommandGroup } from "@grammyjs/commands";
 
@@ -33,6 +33,7 @@ export async function bootCommands(bot: Bot<BotContext>, i18n: I18n<BotContext>)
 
   new StartCommand(commandGroup, i18n).boot();
   new HomeCommand(commandGroup, i18n).boot();
+  new ExercisesCommand(commandGroup, i18n).boot();
 
   // Initialize commands
   await commandGroup.setCommands(bot);
